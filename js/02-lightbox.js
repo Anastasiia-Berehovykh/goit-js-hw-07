@@ -2,7 +2,7 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector(".gallery");
 const galleryMarkup = createGalleryMarkup(galleryItems);
-let instanceBasicLightbox;
+// let instanceBasicLightbox;
 
 function createGalleryMarkup(galleryItems) {
   return galleryItems
