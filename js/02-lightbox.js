@@ -6,15 +6,16 @@ const galleryMarkup = createGalleryMarkup(galleryItems);
 function createGalleryMarkup(galleryItems) {
   return galleryItems
     .map(({ description, original, preview }) => {
-      return `
-        <div class="gallery__item">
-        <a class="gallery__item" href="${original}">
-        <img class="gallery__image" src="${preview}" alt="${description}" data-title="${description}"/>
-        </a>
-      </div>
-      `;
-    })
-    .join("");
+      return `<li>
+   <a class="gallery__item" href="${original}">
+     <img
+       class="gallery__image"
+       src="${preview}"
+       alt="${description}"
+     />
+   </a>
+ </li>`
+}).join('');
 }
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
@@ -31,11 +32,22 @@ function onGalleryContainerClick(event) {
   var lightbox = new SimpleLightbox(".gallery a", {
     /* options */
     captionsData: 'alt', captionDelay: 250, 
+    
 
   });
+  const currentActiveImage = document.querySelector('.is-active');
+  
+    if(currentActiveImage) {
+     currentActiveImage.classList.remove('.is-active');
+   }
+
+   event.target.classList.add('.is-active');
 }
+
+
+
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 // Change code below this line
 
-console.log(galleryItems);
+ console.log(galleryItems);
